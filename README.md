@@ -1,4 +1,19 @@
-# خرج‌یار — Android app prototype
+hesabyar/
+├── app/
+│   ├── build.gradle.kts
+│   └── src/
+│       └── main/
+│           ├── AndroidManifest.xml
+│           └── java/
+│               └── com/example/kharjyar/
+│                   ├── MainActivity.kt
+│                   └── data/
+│                       └── ExpenseParser.kt
+├── .github/
+│   └── workflows/
+│       └── build-kharjyar.yml
+├── build.gradle.kts
+└── settings.gradle.kts# خرج‌یار — Android app prototype
 
 Personal, offline-first SMS expense-review prototype. The app requests SMS access only after tapping its scan button, shows likely purchase messages for explicit review, and keeps approved entries locally using Android SharedPreferences. No SMS is transmitted to a server.
 
