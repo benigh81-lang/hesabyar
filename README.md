@@ -1,20 +1,20 @@
-# خرج‌یار (Kharjyar) — Android prototype
+# خرج‌یار — Android app prototype
 
-An initial Kotlin/Compose prototype for reviewing likely purchase SMS messages. **Nothing is automatically booked or entered into a ledger:** SMS items are candidates and require an explicit approve/reject action.
+Personal, offline-first SMS expense-review prototype. The app requests SMS access only after tapping its scan button, shows likely purchase messages for explicit review, and keeps approved entries locally using Android SharedPreferences. No SMS is transmitted to a server.
 
-## Features in this starter
-- Persian RTL screen
-- Explicit Android SMS permission request
-- Scans up to 250 recent SMS messages after the user taps the scan button
-- Conservative purchase keyword parser and Persian/Arabic digit normalization
-- Review cards with approve/reject controls
+## Features
+- Persian RTL interface and dark Material UI
+- User-triggered SMS scan, capped at 250 recent messages
+- First-pass purchase parser with Persian/Arabic digit normalization
+- Approve/reject review cards
+- Locally persisted approved items (simple JSON in SharedPreferences)
+- GitHub Actions workflow builds a debug APK on pushes to `main` and manual runs
 
-## Build
-Open this folder in Android Studio, use JDK 17, install Android SDK 35, then sync Gradle and run the `app` configuration on an Android phone/emulator. This starter does not include a Gradle wrapper yet.
+## Build locally
+Android Studio, JDK 17, Android SDK 35. Open project and run Gradle sync, or run `gradle assembleDebug`.
 
-## Important limitations of this initial prototype
-- Approval is only held in in-memory UI state; persistent Room storage is the next milestone.
-- The amount parser is intentionally conservative and needs real sample messages to refine. It is not a reliable universal bank parser yet.
-- The parser does not infer currency/unit or category.
-- SMS permissions and use/distribution policies vary by Android version and store. This is a sideload-oriented personal prototype, not a Play Store-ready app.
-- No SMS content is uploaded or sent to a server.
+## Build in GitHub Actions
+Upload this project to a separate GitHub repository. The workflow `.github/workflows/build-apk.yml` will build and attach `app-debug.apk` as an Actions artifact. From GitHub: Actions → Build Kharjyar APK → run workflow (or wait for push) → open successful run → download `kharjyar-debug-apk` artifact.
+
+## Limitations
+Prototype only: parser is not universal and approved list is not yet a full ledger/category/report system. The package targets API 28 for sideload-oriented SMS access; Google Play SMS permission policy may prohibit distribution. Android permission and device compatibility vary.
